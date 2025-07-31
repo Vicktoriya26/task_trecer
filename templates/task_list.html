@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>task_list</h1>
+
+
+<div class="list-group">
+{% for task in tasks %}
+    <a href="#" class="list-group-item list-group-item-action">
+
+    {{task.title}} <span class="badge text-bg-light">{{task.get_status_display}}</span>
+    <span class="badge text-bg-dark">{{task.get_proirity_display}}</span>
+    </a>
+{% endfor %}
+</div>
+{% endblock %}
