@@ -4,10 +4,11 @@
 
 <h1>task_list</h1>
 
+<a class="btn btn-secondary disabled" role="button" aria-disabled="true">Link</a>
 
 <div class="list-group">
 {% for task in tasks %}
-    <a href="#" class="list-group-item list-group-item-action">
+    <a href="{% url 'task_update' task.id %}" class="list-group-item list-group-item-action" >
 
     {{task.title}} <span class="badge text-bg-light">{{task.get_status_display}}</span>
     <span class="badge text-bg-dark">{{task.get_proirity_display}}</span>
