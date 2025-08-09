@@ -1,6 +1,7 @@
+from winreg import DeleteKey
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from task_app.forms import TaskForm
 from task_app.models import Task
@@ -11,11 +12,13 @@ class TaskListView(LoginRequiredMixin, ListView):
     context_object_name = 'tasks'
 
     def get_queryset(self):
-        return Task.objects.filter(author=self.request.user)
+        queryset = Task.objects.filter(author=self.request.user)
+        return queryset
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['welcome_message'] = 'Ласкаво просимо!'
+        
         return context
 
 class TaskCreateView(LoginRequiredMixin, CreateView):

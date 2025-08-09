@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>task_list</h1>
+
+<a class="btn btn-primary disabled" role="button" aria-disabled="true">Primary link</a>
+
+
+<form method="get" class="d-flex align-items-center gap-2"> 
+    {{form.as_p}}
+    <button type="submit" class="btn btn primary">Filtrate</button>
+</form>
+
+
+<div class="list-group">
+{% for task in tasks %}
+    <a href="{% url 'task_update' task.id %}" class="list-group-item list-group-item-action" >
+
+    {{task.title}} <span class="badge text-bg-light">{{task.get_status_display}}</span>
+    <span class="badge text-bg-dark">{{task.get_proirity_display}}</span>
+    </a>
+{% endfor %}
+</div>
+=======
 {% extends 'base.html' %}
 
 {% block content %}
@@ -15,4 +41,5 @@
     </a>
 {% endfor %}
 </div>
+>>>>>>> d379b6e30c07f99ec4aad97fa6be016ca6a18f5e
 {% endblock %}
