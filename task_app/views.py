@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from task_app.forms import TaskForm
 from task_app.models import Task
 
+
 class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'task_list.html'
@@ -38,6 +39,8 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'task_form.html'
+    form_class = TaskForm
+    success_url = reverse_lazy('task_list')
     form_class = TaskForm
     success_url = reverse_lazy('task_list')
     
