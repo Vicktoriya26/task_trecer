@@ -17,17 +17,19 @@ class TaskForm(forms.ModelForm):
 
 class TaskFilterForm(forms.Form):
     STATUS_CHOISES = [
-        ("To Do", "To Do"),
-        ("In Progression", "In progression"),
-        ("Done", "Done")
+        ("", "Всі"),
+        ('todo', 'Треба зробити'),
+        ('in_progress', 'Виконується'),
+        ('done', 'Виконано'),
     ]
 
-    PRIORITY = [    
-        ("low",'low'),
-        ("med", "Medium"),
-        ('high', 'High'),
-        ('2high', 'PIZDA HIGH')
+    PRIORITY = [  
+        ("", "Всі"),  
+        ('low', 'Низбкий'),
+        ('middle', 'Середній'),
+        ('high', 'Високий'),
     ]
+    
     status = forms.ChoiceField(choices=STATUS_CHOISES, label='Status', required=False)
     priority = forms.ChoiceField(choices=PRIORITY, label='Priority', required=False)
     def __init__(self, *args, **kwargs):
